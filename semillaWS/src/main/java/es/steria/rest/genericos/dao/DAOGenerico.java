@@ -6,7 +6,8 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import es.carm.javato.fc.excepciones.DAOLogException;
+import es.steria.rest.excepciones.DAOLogException;
+
 
 public interface DAOGenerico<T, PK extends Serializable> {
 

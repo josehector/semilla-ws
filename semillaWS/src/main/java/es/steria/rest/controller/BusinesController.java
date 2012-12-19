@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import es.carm.javato.fc.excepciones.DAOLogException;
+import es.steria.rest.excepciones.DAOLogException;
 import es.steria.rest.excepciones.InternalServerErrorException;
 import es.steria.rest.excepciones.NotFoundException;
 import es.steria.rest.genericos.servicio.ServicioGenerico;
