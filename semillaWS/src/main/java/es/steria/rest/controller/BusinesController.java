@@ -111,4 +111,16 @@ public class BusinesController {
 			throw new InternalServerErrorException();
 		}
 	}
+	
+	@RequestMapping(value= "/busines/{nombre}/{direccion}/{url}/{telefono}/{email}",
+			method = RequestMethod.GET)
+			@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody ListBusines findBusines(@PathVariable("nombre") String nombre,
+			@PathVariable("direccion") String direccion,
+			@PathVariable("url") String url,
+			@PathVariable("telefono") String telefono,
+			@PathVariable("email") String email) {
+		return null;
+		
+	}
 }
