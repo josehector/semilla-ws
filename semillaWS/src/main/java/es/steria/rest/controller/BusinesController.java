@@ -22,94 +22,93 @@ import es.steria.rest.util.ServicesProvider;
 @Controller
 @RequestMapping("/rest")
 public class BusinesController {
-    
-    private static final Log LOG = LogFactory.getLog(BusinesController.class);
-    
-    private ServicesProvider provider = ServicesProvider.getInstance();
-    
-    @RequestMapping(value="/busines/{id}", method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.OK)
-    public @ResponseBody Busines getBusines(@PathVariable("id") String id) {
-	LOG.debug("getBusines");
-	ServicioGenerico<Busines,String> servicio = 
-		(ServicioGenerico<Busines, String>) provider.getServicio("servicioBusines");
-	try {
-	    Busines busines = servicio.read(id);
-	    if (busines == null) {
-	        throw new NotFoundException();
-	    } else {
-	        return busines;
-	    }
-	} catch (DAOLogException e) {
-	    LOG.error(e);
-	    throw new InternalServerErrorException();
+
+	private static final Log LOG = LogFactory.getLog(BusinesController.class);
+
+	private ServicesProvider provider = ServicesProvider.getInstance();
+
+	@RequestMapping(value = "/busines/{id}", method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody
+	Busines getBusines(@PathVariable("id") String id) {
+		LOG.debug("getBusines");
+		ServicioGenerico<Busines, String> servicio = (ServicioGenerico<Busines, String>) provider
+				.getServicio("servicioBusines");
+		try {
+			Busines busines = servicio.read(id);
+			if (busines == null) {
+				throw new NotFoundException();
+			} else {
+				return busines;
+			}
+		} catch (DAOLogException e) {
+			LOG.error(e);
+			throw new InternalServerErrorException();
+		}
 	}
-    }
-    
-    @RequestMapping(value="/busines",
-	    method = RequestMethod.POST,
-	    headers="Accept=application/xml,application/json")
-    @ResponseStatus(HttpStatus.OK)
-    public @ResponseBody Busines createBusines(@RequestBody Busines busines) {
-	LOG.debug("createBusines");
-	ServicioGenerico<Busines,String> servicio = 
-		(ServicioGenerico<Busines, String>) provider.getServicio("servicioBusines");
-	try {
-	    servicio.create(busines);
-	} catch (DAOLogException e) {
-	    LOG.error(e);
-	    throw new InternalServerErrorException();
+
+	@RequestMapping(value = "/busines", method = RequestMethod.POST, headers = "Accept=application/xml,application/json")
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody
+	Busines createBusines(@RequestBody Busines busines) {
+		LOG.debug("createBusines");
+		ServicioGenerico<Busines, String> servicio = (ServicioGenerico<Busines, String>) provider
+				.getServicio("servicioBusines");
+		try {
+			servicio.create(busines);
+		} catch (DAOLogException e) {
+			LOG.error(e);
+			throw new InternalServerErrorException();
+		}
+		return busines;
 	}
-	return busines;
-    }
-    
-    @RequestMapping(value="/busines/{id}",
-	    method = RequestMethod.PUT,
-	    headers = "Accept=application/xml,application/json")
-    @ResponseStatus(HttpStatus.OK)
-    public @ResponseBody Busines updateBusines(@PathVariable("id") String id, @RequestBody Busines busines) {
-	LOG.debug("updateBusines");
-	ServicioGenerico<Busines,String> servicio = 
-		(ServicioGenerico<Busines, String>) provider.getServicio("servicioBusines");
-	busines.setId(id);
-	try {
-	    servicio.update(busines);
-	} catch (DAOLogException e) {
-	    LOG.error(e);
-	    throw new InternalServerErrorException();
+
+	@RequestMapping(value = "/busines/{id}", method = RequestMethod.PUT, headers = "Accept=application/xml,application/json")
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody
+	Busines updateBusines(@PathVariable("id") String id,
+			@RequestBody Busines busines) {
+		LOG.debug("updateBusines");
+		ServicioGenerico<Busines, String> servicio = (ServicioGenerico<Busines, String>) provider
+				.getServicio("servicioBusines");
+		busines.setId(id);
+		try {
+			servicio.update(busines);
+		} catch (DAOLogException e) {
+			LOG.error(e);
+			throw new InternalServerErrorException();
+		}
+		return busines;
 	}
-	return busines;
-    }
-    
-    @RequestMapping(value="/busines/{id}",
-	    method = RequestMethod.DELETE,
-	    headers = "Accept=application/xml, application/json")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public @ResponseBody void deleteBusines(@PathVariable("id") String id) {
-	LOG.debug("deleteBusines");
-	ServicioGenerico<Busines,String> servicio = 
-		(ServicioGenerico<Busines, String>) provider.getServicio("servicioBusines");
-	try {
-	    servicio.delete(id);
-	} catch (DAOLogException e) {
-	    LOG.error(e);
-	    throw new InternalServerErrorException();
-	}	
-    }
-    
-    @RequestMapping(value="/busines",
-	    method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.OK)
-    public @ResponseBody ListBusines getAll() {
-	LOG.debug("getAll");
-	ServicioGenerico<Busines,String> servicio = 
-		(ServicioGenerico<Busines, String>) provider.getServicio("servicioBusines");
-	try {
-	    ListBusines lis = new ListBusines(servicio.getList());
-	    return lis;
-	} catch (DAOLogException e) {
-	    LOG.error(e);
-	    throw new InternalServerErrorException();
+
+	@RequestMapping(value = "/busines/{id}", method = RequestMethod.DELETE, headers = "Accept=application/xml, application/json")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public @ResponseBody
+	void deleteBusines(@PathVariable("id") String id) {
+		LOG.debug("deleteBusines");
+		ServicioGenerico<Busines, String> servicio = (ServicioGenerico<Busines, String>) provider
+				.getServicio("servicioBusines");
+		try {
+			servicio.delete(id);
+		} catch (DAOLogException e) {
+			LOG.error(e);
+			throw new InternalServerErrorException();
+		}
 	}
-    }
+
+	@RequestMapping(value = "/busines", method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody
+	ListBusines getAll() {
+		LOG.debug("getAll");
+		ServicioGenerico<Busines, String> servicio = (ServicioGenerico<Busines, String>) provider
+				.getServicio("servicioBusines");
+		try {
+			ListBusines lis = new ListBusines(servicio.getList());
+			return lis;
+		} catch (DAOLogException e) {
+			LOG.error(e);
+			throw new InternalServerErrorException();
+		}
+	}
 }
