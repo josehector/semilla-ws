@@ -1,5 +1,7 @@
 package es.steria.rest.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,59 +12,69 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "busines")
 public class Busines {
-    @Id
-    private String id;
-    private String nombre;
-    private String direccion;
-    private String url;
-    private String telefono;
-    private String email;
+	@Id
+	private String id;
+	private String nombre;
+	private String direccion;
+	private String url;
+	private String telefono;
+	private String email;
+	private List<Person> persons;
 
-    public String getId() {
-	return id;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public void setId(String id) {
-	this.id = id;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public String getNombre() {
-	return nombre;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public void setNombre(String nombre) {
-	this.nombre = nombre;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public String getDireccion() {
-	return direccion;
-    }
+	public String getDireccion() {
+		return direccion;
+	}
 
-    public void setDireccion(String direccion) {
-	this.direccion = direccion;
-    }
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
 
-    public String getUrl() {
-	return url;
-    }
+	public String getUrl() {
+		return url;
+	}
 
-    public void setUrl(String url) {
-	this.url = url;
-    }
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
-    public String getTelefono() {
-	return telefono;
-    }
+	public String getTelefono() {
+		return telefono;
+	}
 
-    public void setTelefono(String telefono) {
-	this.telefono = telefono;
-    }
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
 
-    public String getEmail() {
-	return email;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setEmail(String email) {
-	this.email = email;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public List<Person> getPersons() {
+		return persons;
+	}
+
+	public void setPersons(List<Person> persons) {
+		this.persons = persons;
+	}
+	
 }
