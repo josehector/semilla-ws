@@ -27,6 +27,7 @@ public interface DAOGenerico<T, PK extends Serializable> {
 
     public List<T> getList() throws DAOLogException;
 
+    @Transactional
     public List<T> findByExample(T exampleObject) throws DAOLogException;
 
     @Transactional
