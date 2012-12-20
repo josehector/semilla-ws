@@ -120,8 +120,18 @@ public class BusinesController {
 			@PathVariable("url") String url,
 			@PathVariable("telefono") String telefono,
 			@PathVariable("email") String email) {
-		//TODO: desarrollar
-		return null;
+		LOG.debug("findBusines");
+		LOG.debug("Nombre: " + nombre);
+		ServicioGenerico<Busines, String> servicio = (ServicioGenerico<Busines, String>) provider
+			.getServicio("servicioBusines");
+		Busines businesExample = new Busines();
+		businesExample.setNombre(nombre);
+		businesExample.setDireccion(direccion);
+		businesExample.setUrl(url);
+		businesExample.setTelefono(telefono);
+		businesExample.setEmail(email);
+		ListBusines listado = new ListBusines(servicio.findByExample(businesExample));
+		return listado;
 		
 	}
 }
