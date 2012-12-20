@@ -19,7 +19,7 @@ public class Busines {
 	private String url;
 	private String telefono;
 	private String email;
-	private List<Person> persons;
+	//private List<Person> persons;
 
 	public String getId() {
 		return id;
@@ -69,12 +69,12 @@ public class Busines {
 		this.email = email;
 	}
 
-	public List<Person> getPersons() {
+	/*public List<Person> getPersons() {
 		return persons;
 	}
 
 	public void setPersons(List<Person> persons) {
 		this.persons = persons;
-	}
+	}*/
 	
 }
