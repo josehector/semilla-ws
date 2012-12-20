@@ -105,19 +105,19 @@ public class JPADAOGenerico<T, PK extends Serializable> implements
 	    return query.getResultList();
 	} catch (Exception e) {
 	    log.error(e);
-	    throw new DAOLogException("Error en el metodo delete de"
+	    throw new DAOLogException("Error en el metodo getList de"
 		    + " JPDAOGenerico: " + e.getMessage());
 	}
     }
 
     public List<T> findByExample(T exampleObject) throws DAOLogException {
-	try {
+	try {	    
 	    Session sesion = (Session) this.entityManager.getDelegate();
 	    Criteria criteria = createExampleCriteria(exampleObject, sesion);
 	    return criteria.list();
 	} catch (HibernateException e) {
 	    log.error(e);
-	    throw new DAOLogException("Error en el metodo delete de"
+	    throw new DAOLogException("Error en el metodo findByExample de"
 		    + " JPDAOGenerico: " + e.getMessage());
 	}
     }
