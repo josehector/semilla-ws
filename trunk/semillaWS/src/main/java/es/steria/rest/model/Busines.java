@@ -1,10 +1,14 @@
 package es.steria.rest.model;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -13,13 +17,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "busines")
 public class Busines {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private String id;
 	private String nombre;
 	private String direccion;
 	private String url;
 	private String telefono;
 	private String email;
-	//private List<Person> persons;
+	private Set<Person> persons;
 
 	public String getId() {
 		return id;
@@ -69,12 +74,14 @@ public class Busines {
 		this.email = email;
 	}
 
-	/*public List<Person> getPersons() {
+	@OneToMany
+	@JoinColumn(name="busines")
+	public Set<Person> getPersons() {
 		return persons;
 	}
 
-	public void setPersons(List<Person> persons) {
+	public void setPersons(Set<Person> persons) {
 		this.persons = persons;
-	}*/
+	}
 	
 }

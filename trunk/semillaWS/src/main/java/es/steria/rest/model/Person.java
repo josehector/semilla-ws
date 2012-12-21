@@ -15,6 +15,8 @@ public class Person {
     private String nombre;
     private String apellido1;
     private String apellido2;
+    private Busines busines;
+    
     public String getId() {
         return id;
     }
@@ -39,4 +41,11 @@ public class Person {
     public void setApellido2(String apellido2) {
         this.apellido2 = apellido2;
     }
+    public Busines getBusines() {
+        return busines;
+    }
+    public void setBusines(Busines busines) {
+        this.busines = busines;
+    }
+    
 }
