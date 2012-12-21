@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -112,24 +113,16 @@ public class BusinesController {
 		}
 	}
 	
-	@RequestMapping(value= "/busines/{nombre}/{direccion}/{url}/{telefono}/{email}",
+	@RequestMapping(value= "/busines/nombre/{nombre}",
 			method = RequestMethod.GET)
-			@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody ListBusines findBusines(@PathVariable("nombre") String nombre,
-			@PathVariable("direccion") String direccion,
-			@PathVariable("url") String url,
-			@PathVariable("telefono") String telefono,
-			@PathVariable("email") String email) {
+	@ResponseStatus(HttpStatus.OK)	
+	public @ResponseBody ListBusines findBusines(@PathVariable("nombre") String nombre) {
 		LOG.debug("findBusines");
 		LOG.debug("Nombre: " + nombre);
 		ServicioGenerico<Busines, String> servicio = (ServicioGenerico<Busines, String>) provider
 			.getServicio("servicioBusines");
 		Busines businesExample = new Busines();
 		businesExample.setNombre(nombre);
-		businesExample.setDireccion(direccion);
-		businesExample.setUrl(url);
-		businesExample.setTelefono(telefono);
-		businesExample.setEmail(email);
 		ListBusines listado = new ListBusines(servicio.findByExample(businesExample));
 		return listado;
 		
